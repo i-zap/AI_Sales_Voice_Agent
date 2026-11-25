@@ -140,6 +140,7 @@ async function startCall() {
     });
 
     await room.connect(url, token);
+    await room.startAudio();
     await room.localParticipant.setMicrophoneEnabled(true);
 
     el("roomBadge").textContent = room_name;
