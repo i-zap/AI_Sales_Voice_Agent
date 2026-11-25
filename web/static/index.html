@@ -1,0 +1,107 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Fortivex AI — Empowers Academy Voice Sales Agent</title>
+  <link rel="stylesheet" href="/static/styles.css" />
+  <script src="https://cdn.jsdelivr.net/npm/livekit-client@2.9.1/dist/livekit-client.umd.min.js"></script>
+</head>
+<body>
+  <header class="topbar">
+    <div class="brand">
+      <div class="brand-dot"></div>
+      <div>
+        FORTIVEX AI
+        <small>Empowers Academy · Autonomous Multi-Agent Voice SDR</small>
+      </div>
+    </div>
+    <nav class="nav-links">
+      <a href="/" class="active">Voice Console</a>
+      <a href="/dashboard">CRM &amp; Call Insights</a>
+    </nav>
+  </header>
+
+  <main class="container">
+    <div class="grid-main">
+      <!-- LEFT: Call Controls & Chaos Circuit Breaker -->
+      <div class="stack">
+        <section class="card">
+          <h2>WebRTC Voice Session <span id="roomBadge" class="badge badge-slate">IDLE</span></h2>
+          <div class="voice-orb-wrap">
+            <div id="voiceOrb" class="voice-orb">READY</div>
+            <div id="statusText" class="status-line">Click Start Call — zero login required</div>
+          </div>
+
+          <label style="font-size:12px;color:var(--muted);display:block;margin-bottom:6px;">Prospect Name (Optional)</label>
+          <input id="prospectName" type="text" placeholder="e.g. Aarav Sharma" />
+
+          <div class="btn-row">
+            <button id="startBtn" class="btn-primary">Start Live Call</button>
+            <button id="muteBtn" class="btn-secondary" disabled>Mute</button>
+            <button id="endBtn" class="btn-danger" disabled>End</button>
+          </div>
+        </section>
+
+        <section class="card">
+          <h2>Circuit Breaker Failover <span id="circuitBadge" class="badge badge-green">CLOSED</span></h2>
+          <div class="kv-list" style="margin-bottom:14px;">
+            <div class="kv"><span class="k">Active LLM</span><span id="activeLLM" class="v">OpenAI gpt-4.1-mini</span></div>
+            <div class="kv"><span class="k">Active STT</span><span id="activeSTT" class="v">OpenAI gpt-4o-mini-transcribe</span></div>
+            <div class="kv"><span class="k">Active TTS</span><span id="activeTTS" class="v">OpenAI gpt-4o-mini-tts</span></div>
+            <div class="kv"><span class="k">Failover Events</span><span id="failoverCount" class="v">0</span></div>
+          </div>
+          <button id="chaosBtn" class="btn-chaos" disabled>Simulate OpenAI Outage (Switch to Groq)</button>
+          <p style="font-size:11px;color:var(--muted);margin-top:8px;">
+            Trips OpenAI mid-call via LiveKit DataChannel to demonstrate real-time failover to Groq LPU (gpt-oss-20b + Whisper Turbo + Orpheus TTS).
+          </p>
+        </section>
+      </div>
+
+      <!-- CENTER: Live Transcript & Telemetry Stream -->
+      <section class="card">
+        <h2>Live Conversation &amp; Handoff Log <span id="turnCount" class="badge badge-indigo">0 turns</span></h2>
+        <div id="transcriptBox" class="transcript-box">
+          <div class="msg event">Start a live call to speak with Aria (Empowers Academy Sales Orchestrator).</div>
+        </div>
+      </section>
+
+      <!-- RIGHT: Multi-Agent Topology & Live Lead CRM State -->
+      <div class="stack">
+        <section class="card">
+          <h2>Hub-and-Spoke Multi-Agent</h2>
+          <div class="agent-nodes">
+            <div id="node-Orchestrator" class="agent-pill active">Orchestrator<span>Main Router &amp; Recap</span></div>
+            <div id="node-Qualifier" class="agent-pill">Qualifier<span>EdTech BANT Scoring</span></div>
+            <div id="node-RAG Advisor" class="agent-pill">RAG Advisor<span>Empowers Catalog</span></div>
+            <div id="node-Booking & CRM" class="agent-pill">Booking &amp; CRM<span>Cal.com v2 + Sync</span></div>
+          </div>
+        </section>
+
+        <section class="card">
+          <h2>Live Lead Qualification &amp; CRM</h2>
+          <div class="kv-list">
+            <div class="kv"><span class="k">Lead Name</span><span id="leadName" class="v">—</span></div>
+            <div class="kv"><span class="k">Email</span><span id="leadEmail" class="v">—</span></div>
+            <div class="kv"><span class="k">Target Track</span><span id="targetCourse" class="v">—</span></div>
+            <div class="kv"><span class="k">Lead Score</span><span id="leadScore" class="v"><span class="badge badge-slate">0 · Unqualified</span></span></div>
+            <div class="kv"><span class="k">Sentiment</span><span id="sentimentVal" class="v"><span class="badge badge-slate">Neutral</span></span></div>
+            <div class="kv"><span class="k">Cal.com Booking</span><span id="bookingStatus" class="v"><span class="badge badge-slate">Not Booked</span></span></div>
+            <div class="kv"><span class="k">Slot Time</span><span id="bookingTime" class="v">—</span></div>
+          </div>
+
+          <div style="margin-top:14px;">
+            <span style="font-size:11px;color:var(--muted);text-transform:uppercase;letter-spacing:0.6px;">Grounded RAG Citations</span>
+            <div id="ragChips" class="rag-chips">
+              <span class="badge badge-slate">None queried yet</span>
+            </div>
+          </div>
+        </section>
+      </div>
+    </div>
+  </main>
+
+  <div id="audioContainer" style="display:none;"></div>
+  <script src="/static/app.js"></script>
+</body>
+</html>

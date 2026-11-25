@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Fortivex CRM — Call Insights &amp; Lead Pipeline</title>
+  <link rel="stylesheet" href="/static/styles.css" />
+</head>
+<body>
+  <header class="topbar">
+    <div class="brand">
+      <div class="brand-dot"></div>
+      <div>
+        FORTIVEX CRM
+        <small>Empowers Academy · Autonomous Voice Pipeline &amp; Business Insights</small>
+      </div>
+    </div>
+    <nav class="nav-links">
+      <a href="/">Voice Console</a>
+      <a href="/dashboard" class="active">CRM &amp; Call Insights</a>
+    </nav>
+  </header>
+
+  <main class="container">
+    <section class="kpi-grid">
+      <div class="kpi-card"><div class="kpi-label">Total Voice Calls</div><div id="kpiCalls" class="kpi-val">0</div></div>
+      <div class="kpi-card"><div class="kpi-label">Hot Leads (&gt;=75)</div><div id="kpiHot" class="kpi-val" style="color:var(--emerald)">0</div></div>
+      <div class="kpi-card"><div class="kpi-label">Cal.com Bookings</div><div id="kpiBooked" class="kpi-val" style="color:var(--teal)">0</div></div>
+      <div class="kpi-card"><div class="kpi-label">Avg Lead Score</div><div id="kpiAvg" class="kpi-val">0</div></div>
+      <div class="kpi-card"><div class="kpi-label">Failover Recoveries</div><div id="kpiFailovers" class="kpi-val" style="color:var(--amber)">0</div></div>
+    </section>
+
+    <section class="card">
+      <h2>
+        Qualified EdTech Leads &amp; Call Summaries
+        <button id="refreshBtn" class="btn-secondary" style="padding:5px 12px;font-size:12px;">Refresh Now</button>
+      </h2>
+      <div class="table-wrap">
+        <table>
+          <thead>
+            <tr>
+              <th>Lead</th>
+              <th>Target Course</th>
+              <th>Score / Tier</th>
+              <th>Sentiment</th>
+              <th>Cal.com Booking</th>
+              <th>Provider / Failovers</th>
+              <th>Executive Summary</th>
+            </tr>
+          </thead>
+          <tbody id="leadsBody">
+            <tr><td colspan="7" style="color:var(--muted);text-align:center;padding:24px;">No calls logged yet. Run a voice call from the Voice Console.</td></tr>
+          </tbody>
+        </table>
+      </div>
+    </section>
+
+    <section id="detailDrawer" class="drawer">
+      <div style="display:flex;justify-content:space-between;align-items:center;">
+        <h2 style="margin:0;color:var(--teal);" id="drawerTitle">Call Insights</h2>
+        <button id="closeDrawer" class="btn-secondary" style="padding:5px 12px;">Close</button>
+      </div>
+      <div class="drawer-grid">
+        <div class="kv-list" id="drawerMeta"></div>
+        <div>
+          <div style="font-size:11px;color:var(--muted);text-transform:uppercase;margin-bottom:8px;">Timestamped Call Transcript</div>
+          <div id="drawerTranscript" class="transcript-box" style="height:260px;"></div>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <script src="/static/dashboard.js"></script>
+</body>
+</html>

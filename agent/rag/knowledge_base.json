@@ -1,0 +1,44 @@
+[
+  {
+    "id": "course_voice_ai",
+    "title": "Autonomous AI & Voice Agents Engineering Fellowship",
+    "category": "course",
+    "keywords": ["voice ai", "livekit", "agents", "stt", "tts", "rag", "webrtc", "telephony", "sip", "llm", "fellowship"],
+    "content": "The Autonomous AI & Voice Agents Engineering Fellowship at Empowers Academy is a 16-week live mentor-led cohort designed for software engineers and final-year CS/IT learners. Curriculum covers real-time WebRTC and SIP telephony pipelines, STT/LLM/TTS orchestration, hybrid RAG architectures, multi-agent tool calling, guardrails, and Kubernetes deployment. Includes 3 production capstone projects and weekly 1-on-1 code reviews. Tuition fee is INR 65,000 (or USD 800) with zero-cost EMI starting at INR 5,417/month for 12 months. Next cohort starts on the 1st Monday of next month."
+  },
+  {
+    "id": "course_cloud_devops",
+    "title": "Cloud Engineering, Kubernetes & DevOps Career Accelerator",
+    "category": "course",
+    "keywords": ["cloud", "aws", "azure", "devops", "docker", "kubernetes", "terraform", "ci/cd", "sre", "bootcamp"],
+    "content": "The Cloud & DevOps Career Accelerator is a 14-week hands-on bootcamp covering Linux administration, Docker, Kubernetes, Terraform Infrastructure as Code, GitHub Actions CI/CD, AWS & Microsoft Azure production architecture, and observability with Prometheus and Grafana. Tuition is INR 48,000 (or USD 600) with zero-cost EMI from INR 4,000/month over 12 months. Includes real cloud sandbox credits and mock SRE/DevOps system design interviews."
+  },
+  {
+    "id": "course_fullstack_genai",
+    "title": "Full-Stack Generative AI & Agentic Systems Cohort",
+    "category": "course",
+    "keywords": ["genai", "full stack", "python", "fastapi", "react", "langchain", "rag", "vector database", "beginner", "fresher"],
+    "content": "The Full-Stack GenAI Cohort is a 12-week program ideal for freshers, college students, and career switchers. Covers Python backend engineering with FastAPI, prompt engineering, RAG over enterprise documents, vector databases, evaluation harnesses, and deploying full-stack AI SaaS apps. Tuition is INR 39,000 (or USD 490) with zero-cost EMI from INR 3,250/month. Prerequisite is basic familiarity with any programming language."
+  },
+  {
+    "id": "placement_career",
+    "title": "Career Services, Placement Assistance & Outcomes",
+    "category": "placement",
+    "keywords": ["placement", "job", "salary", "package", "hiring", "resume", "interview", "mock interview", "guarantee", "roi"],
+    "content": "Empowers Academy provides dedicated Career Acceleration support for 6 months post-graduation: ATS resume optimization, GitHub portfolio audits, 5 live technical mock interviews with industry hiring managers, and direct hiring referrals to 120+ partner startups and enterprise AI teams across India and the UAE. Average reported salary hike for placed working professionals is 45% to 80%. Note: we offer structured placement assistance and guaranteed interview loops rather than a fake 100% job guarantee."
+  },
+  {
+    "id": "pricing_emi_scholarships",
+    "title": "Fees, No-Cost EMI, Scholarships & Refund Policy",
+    "category": "pricing",
+    "keywords": ["price", "cost", "fee", "emi", "installment", "scholarship", "discount", "refund", "budget", "expensive"],
+    "content": "All Empowers Academy programs support 6-month and 12-month no-cost EMI via major Indian cards and NBFC education partners, plus a 10% upfront pay-in-full discount. Merit and early-bird scholarships up to 20% are awarded after a free 15-minute Career Counseling & Readiness Assessment call. Every enrollment includes a transparent 7-day no-questions-asked 100% refund window after cohort kickoff."
+  },
+  {
+    "id": "schedule_lms_format",
+    "title": "Live Class Timings, Recordings, Mentorship & Certification",
+    "category": "logistics",
+    "keywords": ["schedule", "timing", "weekend", "working professional", "recorded", "lms", "certificate", "doubt", "mentor"],
+    "content": "Classes are built for working professionals and college students: live interactive sessions run Saturday and Sunday (10:00 AM to 1:00 PM IST) plus two optional weekday evening doubt-clearing office hours (8:00 PM IST). Learners receive lifetime LMS access to HD recordings, GitHub starter repos, Slack/Discord mentor channels, and an industry-verified Empowers Academy & Fortivex AI completion certificate upon shipping their capstone."
+  }
+]

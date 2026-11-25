@@ -1,0 +1,14 @@
+venv/
+.venv/
+.git/
+__pycache__/
+*.pyc
+.env
+.env.*
+*.db
+*.db-shm
+*.db-wal
+web/
+scripts/
+README.md
+render.yaml
