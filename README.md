@@ -11,7 +11,7 @@ Production-architected real-time AI sales voice agent built with **LiveKit Agent
                 │
    Python Multi-Agent Voice Worker
    ├─ 2-Tier Failover: OpenAI (gpt-4.1-mini / transcribe / tts)
-   │                ──▶ Groq LPU (openai/gpt-oss-20b / whisper-turbo / orpheus-tts)
+   │                ──▶ Groq (openai/gpt-oss-20b / whisper-turbo / orpheus-tts)
    └─ Hub-and-Spoke Agents (Shared CallState):
        ├─ Main Orchestrator (Intent Router, Sentiment, Wrap-up)
        ├─ Lead Qualifier (EdTech BANT 0-100 Scoring)
