@@ -9,7 +9,7 @@ from agent.state import CallState
 logger = logging.getLogger("fortivex.summarizer")
 
 SUMMARY_SYSTEM = (
-    "You are a Fortivex AI Revenue Operations analyst for Empowers Academy (EdTech). "
+    "You are a Fortivex AI Revenue Operations analyst for AI Academy (EdTech). "
     "Given a sales call transcript and lead profile, return ONLY valid JSON with keys: "
     '"summary" (2 concise sentences covering learner goal, objections, and outcome), '
     '"next_action" (1 concrete sales follow-up action), '
@@ -42,7 +42,7 @@ async def _call_chat_json(url: str, api_key: str, model: str, user_prompt: str) 
 async def generate_call_summary(state: CallState) -> None:
     if not state.transcript:
         state.summary = "Call connected with no completed dialogue turns."
-        state.next_action = "Send automated Empowers Academy brochure follow-up."
+        state.next_action = "Send automated AI Academy brochure follow-up."
         state.compute_lead_score()
         return
 
@@ -79,7 +79,7 @@ async def generate_call_summary(state: CallState) -> None:
 
     state.compute_lead_score()
     state.summary = (
-        f"Spoke with {state.lead_name} regarding {state.target_course or 'Empowers Academy programs'}. "
+        f"Spoke with {state.lead_name} regarding {state.target_course or 'AI Academy programs'}. "
         f"Lead tier: {state.lead_tier} ({state.lead_score}/100); booking status: {state.booking_status}."
     )
     state.next_action = (

@@ -19,7 +19,7 @@ init_db()
 STATIC_DIR = Path(__file__).parent / "static"
 CRM_SECRET = os.getenv("CRM_INTERNAL_SECRET", "fortivex-demo-secret-2026")
 
-app = FastAPI(title="Fortivex AI — Empowers Academy Voice Sales & CRM")
+app = FastAPI(title="Fortivex AI — AI Academy Voice Sales & CRM")
 app.add_middleware(
     CORSMiddleware,
     allow_origins=["*"],

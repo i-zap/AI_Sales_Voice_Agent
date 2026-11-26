@@ -114,7 +114,7 @@ async def entrypoint(ctx: JobContext) -> None:
     await state.publish_telemetry("connected", "Voice agent joined room — OpenAI Primary active")
     await session.generate_reply(
         instructions=(
-            "Greet the prospect warmly on behalf of Empowers Academy by Fortivex AI, "
+            "Greet the prospect warmly on behalf of AI Academy by Temp AI, "
             "briefly note this AI-assisted call may be recorded for quality, and ask what tech career goal or course they are exploring today."
         )
     )

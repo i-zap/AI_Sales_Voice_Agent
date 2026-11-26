@@ -42,7 +42,7 @@ EXTRACT_SYSTEM = (
     "Return ONLY valid JSON with these exact keys (use empty string \"\" if not mentioned): "
     '"lead_name", "lead_email", "current_role", "target_course", "timeline", "budget_comfort", '
     '"sentiment" (one of: Positive, Neutral, Hesitant, Negative). '
-    "Map target_course to one of Empowers Academy's tracks when clear: "
+    "Map target_course to one of AI Academy's tracks when clear: "
     "'Autonomous AI & Voice Agents Engineering Fellowship', "
     "'Cloud Engineering, Kubernetes & DevOps Accelerator', or "
     "'Full-Stack Generative AI & Agentic Systems Cohort'. "
