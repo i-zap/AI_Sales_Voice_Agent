@@ -32,6 +32,13 @@ class AdvisorAgent(Agent):
         state = context.userdata
         titles = [h["title"] for h in hits]
         state.rag_hits.extend(titles)
+
+        if not state.target_course:
+            for h in hits:
+                if h["id"].startswith("course_"):
+                    state.merge_extracted_fields({"target_course": h["title"]})
+                    break
+
         await state.publish_telemetry("rag_lookup", f"RAG retrieved: {', '.join(titles)}")
         return "\n\n".join(f"[{h['title']}]: {h['content']}" for h in hits)
 

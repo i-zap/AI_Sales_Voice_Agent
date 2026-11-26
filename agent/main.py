@@ -7,6 +7,7 @@ from livekit.plugins import silero
 
 from agent.failover import build_resilient_pipeline
 from agent.services.crm_client import sync_state_to_crm
+from agent.services.lead_observer import LeadScoringObserver
 from agent.services.summarizer import generate_call_summary
 from agent.state import CallState
 from agent.subagents.orchestrator import OrchestratorAgent
@@ -33,6 +34,19 @@ async def entrypoint(ctx: JobContext) -> None:
 
     vad = ctx.proc.userdata["vad"]
     state = CallState(room_name=room_name, room=ctx.room)
+    observer = LeadScoringObserver(state)
+
+    # Seed prospect name from browser form if provided
+    for p in ctx.room.remote_participants.values():
+        if p.name and p.name.strip().lower() not in ("prospect", "unknown"):
+            state.merge_extracted_fields({"lead_name": p.name.strip()})
+
+    @ctx.room.on("participant_connected")
+    def _on_participant(p: rtc.RemoteParticipant) -> None:
+        if p.name and p.name.strip().lower() not in ("prospect", "unknown"):
+            if state.merge_extracted_fields({"lead_name": p.name.strip()}):
+                state.schedule_telemetry("state_update", "")
+
     fallback_stt, fallback_llm, fallback_tts = build_resilient_pipeline(state, vad=vad)
 
     session = AgentSession[CallState](
@@ -80,10 +94,13 @@ async def entrypoint(ctx: JobContext) -> None:
         text = getattr(item, "text_content", "") or ""
         if role in ("user", "assistant") and text.strip():
             state.append_turn(role, text)
+            if role == "user":
+                observer.on_user_turn(text)
             state.schedule_telemetry("transcript", "")
 
     async def _on_shutdown() -> None:
         logger.info("Finalizing CRM summary for room %s...", room_name)
+        await observer.flush()
         await generate_call_summary(state)
         await sync_state_to_crm(state)
 

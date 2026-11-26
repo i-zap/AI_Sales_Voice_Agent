@@ -17,7 +17,11 @@ class QualifierAgent(Agent):
         state.active_agent = "Qualifier"
         await state.publish_telemetry("agent_handoff", "Switched to Lead Qualifier Sub-Agent")
         self.session.generate_reply(
-            instructions="Smoothly continue the conversation to understand their background, target track, and timeline."
+            instructions=(
+                "FIRST check the conversation history: if the prospect already shared their name, role, target track, "
+                "timeline, or EMI/budget comfort, IMMEDIATELY call record_lead_qualification with ALL known details "
+                "before speaking. Then ask for any single missing detail or hand back to the orchestrator."
+            )
         )
 
     @function_tool
@@ -31,25 +35,24 @@ class QualifierAgent(Agent):
         budget_comfort: str = "",
         sentiment: str = "",
     ) -> str:
-        """Save EdTech BANT lead qualification details and calculate lead score."""
+        """Save ALL known EdTech BANT lead qualification details and calculate lead score."""
         state = context.userdata
-        if lead_name:
-            state.lead_name = lead_name.strip()
-        if current_role:
-            state.current_role = current_role.strip()
-        if target_course:
-            state.target_course = target_course.strip()
-        if timeline:
-            state.timeline = timeline.strip()
-        if budget_comfort:
-            state.budget_comfort = budget_comfort.strip()
-        if sentiment in ("Positive", "Neutral", "Hesitant", "Negative"):
-            state.sentiment = sentiment
-
-        score, tier = state.compute_lead_score()
+        state.merge_extracted_fields(
+            {
+                "lead_name": lead_name,
+                "current_role": current_role,
+                "target_course": target_course,
+                "timeline": timeline,
+                "budget_comfort": budget_comfort,
+                "sentiment": sentiment,
+            }
+        )
         await sync_state_to_crm(state)
-        await state.publish_telemetry("qualification_saved", f"Lead scored {score}/100 ({tier})")
-        return f"Qualification recorded. Lead score is {score}/100 ({tier})."
+        await state.publish_telemetry(
+            "qualification_saved",
+            f"Lead scored {state.lead_score}/100 ({state.lead_tier})",
+        )
+        return f"Qualification recorded. Lead score is {state.lead_score}/100 ({state.lead_tier})."
 
     @function_tool
     async def return_to_orchestrator(
