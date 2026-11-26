@@ -1,10 +1,10 @@
-# Fortivex AI — Academy Autonomous Sales Voice Agent
+# Fortivex AI — AI Academy Autonomous Sales Voice Agent
 
 [![Live Demo](https://img.shields.io/badge/Live%20Console-Render-14b8a6?style=for-the-badge)](https://fortivex-voice-crm.onrender.com/)
 [![CRM Dashboard](https://img.shields.io/badge/CRM%20Dashboard-Live-6366f1?style=for-the-badge)](https://fortivex-voice-crm.onrender.com/dashboard)
 [![Stack](https://img.shields.io/badge/LiveKit%20Agents%201.8-OpenAI%20%E2%86%94%20Groq-dc2626?style=for-the-badge)](#system-architecture)
 
-An end-to-end autonomous AI sales voice agent built for **AI Academy (EdTech)** that conducts real-time WebRTC voice conversations, qualifies inbound prospects using BANT scoring, answers curriculum and EMI objections via sub-5 ms Hybrid RAG, books live **Cal.com v2** counseling appointments, and syncs structured call intelligence into a **FastAPI + SQLite CRM dashboard**.
+An end-to-end autonomous AI sales voice agent that conducts real-time WebRTC voice conversations, qualifies inbound prospects using BANT scoring, answers curriculum and EMI objections via sub-5 ms Hybrid RAG, books live **Cal.com v2** counseling appointments, and syncs structured call intelligence into a **FastAPI + SQLite CRM dashboard**.
 
 > **Live Prototype (Zero Login Required):**
 > - **Voice Console & Chaos Failover UI:** https://fortivex-voice-crm.onrender.com/
