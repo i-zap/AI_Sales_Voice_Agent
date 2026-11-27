@@ -1,4 +1,4 @@
-# Fortivex AI — AI Academy Autonomous Sales Voice Agent
+# Fortivex — AI Academy Autonomous Sales Voice Agent
 
 [![Live Demo](https://img.shields.io/badge/Live%20Console-Render-14b8a6?style=for-the-badge)](https://fortivex-voice-crm.onrender.com/)
 [![CRM Dashboard](https://img.shields.io/badge/CRM%20Dashboard-Live-6366f1?style=for-the-badge)](https://fortivex-voice-crm.onrender.com/dashboard)
